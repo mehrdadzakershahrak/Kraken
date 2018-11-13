@@ -5,6 +5,13 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
+const path = require('path');
+const mongodb = require('mongodb');
+const uuid = require('uuid/v4');
+var mongo = require('mongoskin');
+var db = mongo.db("mongodb://localhost:27017/test", { native_parser: true });
+
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,4 +37,43 @@ app.use('/users', require('./controllers/users.controller'));
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
 var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
+});
+
+
+
+
+// ***********************************
+const GAMETYPE = 'game1_train';
+
+const users = {};
+
+
+app.use(express.static(path.join(__dirname, '/home/renil/github/crs/Kraken/client/src/app/home/Game/public')));
+
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, `/home/renil/github/crs/Kraken/client/src/app/home/Game/instr_${GAMETYPE}.html`)));
+
+app.get('/game', (req, res) => res.sendFile(path.join(__dirname, `/home/renil/github/crs/Kraken/client/src/app/home/Game/${GAMETYPE}.html`)));
+
+app.get('/questions', (req, res) => res.sendFile(path.join(__dirname, '/home/renil/github/crs/Kraken/client/src/app/home/Game/questions.html')));
+
+app.post('/game', (req, res) => {
+    const id = uuid();
+    const obj = { id: id, plan: req.body.path.map(step => { return { action: step.Action, explain: step.explain } }), mapId: req.body.mapId, planTime: req.body.path.reduce((sum, step) => step.time ? sum + parseInt(step.time) : sum, 0), planSize: req.body.path.length };
+    users[id] = obj;
+    res.send(id);
+});
+
+app.post('/questions', (req, res) => {
+    console.log(req.body.id);
+    if (users[req.body.id]) {
+        const obj = { id: req.body.id, mapId: users[req.body.id].mapId, plan: users[req.body.id].plan, planSize: users[req.body.id].planSize, planTime: users[req.body.id].planTime, answers: req.body.answers };
+        console.log(obj);
+        delete users[req.body.id];
+
+        db.collection(GAMETYPE).insertOne(obj, (err, doc) => {
+            if (err) throw err;
+            res.send('Submission received');
+        });
+    }
+
 });

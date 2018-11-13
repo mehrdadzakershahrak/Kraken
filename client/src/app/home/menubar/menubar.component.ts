@@ -56,5 +56,13 @@ export class MenubarComponent implements OnInit{
     });
   }
 
+  getGame(nextRoute: string) {
+    this.router.navigate([nextRoute]);
+  };
+
+  simulate(nextRoute: string) {
+    this.router.navigate([nextRoute]);
+  };
+
   ngOnInit(){ }
 }

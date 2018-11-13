@@ -49,6 +49,19 @@ var MenubarComponent = /** @class */ (function () {
             dialogRef.result.then(function (result) { return _this.setSocket(result, nextRoute); });
         });
     };
+
+// ********************************
+    MenubarComponent.prototype.getGame = function (nextRoute) {
+            var _this = this;
+            this.router.navigate([nextRoute]);
+        };
+
+    MenubarComponent.prototype.simulate = function (nextRoute) {
+            var _this = this;
+            this.router.navigate([nextRoute]);
+        };
+// *****************************
+
     MenubarComponent.prototype.ngOnInit = function () { };
     MenubarComponent = __decorate([
         core_1.Component({

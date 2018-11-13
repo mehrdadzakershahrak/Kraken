@@ -31,6 +31,9 @@ import { AddUsersComponent } from './home/settings/add-users/index';
 import { DeleteUsersComponent } from './home/settings/delete-users/index';
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
+import { GametrainComponent } from './home/Game/gametrain/index';
+import { GametestComponent } from './home/Game/gametest/index';
+import { HuskysimComponent } from './home/simulation/huskysim/huskysim.component';
 
 @NgModule({
     imports: [
@@ -62,7 +65,10 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         HuskyComponent,
         HuskyTelemetryComponent,
 	DeleteUsersComponent,
-	AddUsersComponent
+	AddUsersComponent,
+	GametrainComponent,
+	GametestComponent,
+	HuskysimComponent
     ],
     providers: [
         customHttpProvider,

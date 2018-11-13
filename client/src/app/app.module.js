@@ -34,6 +34,8 @@ var index_19 = require("./home/husky/index");
 var index_20 = require("./home/husky/index");
 var index_21 = require("./home/settings/add-users/index");
 var index_22 = require("./home/settings/delete-users/index");
+var index_22 = require("./home/Game/gametrain/index");
+var index_23 = require("./home/Game/gametest/index");
 var ngx_modialog_1 = require("ngx-modialog");
 var bootstrap_1 = require("ngx-modialog/plugins/bootstrap");
 var AppModule = /** @class */ (function () {
@@ -70,7 +72,9 @@ var AppModule = /** @class */ (function () {
                 index_19.HuskyComponent,
                 index_20.HuskyTelemetryComponent,
                 index_22.DeleteUsersComponent,
-                index_21.AddUsersComponent
+                index_21.AddUsersComponent,
+                index_22.GametrainComponent,
+                index_23.GametestComponent
             ],
             providers: [
                 index_1.customHttpProvider,

@@ -16,12 +16,19 @@ var index_12 = require("./home/settings/add-users/index");
 var index_13 = require("./home/settings/delete-users/index");
 var index_14 = require("./auth/forgot-password/index");
 var index_15 = require("./_guards/index");
+var index_16 = require("./home/Game/gametrain/index");
+var index_17 = require("./home/Game/gametest/index");
+var index_18 = require("./home/simulation/huskysim/index");
+
 var appRoutes = [
     { path: '', component: index_1.HomeComponent, canActivate: [index_15.AuthGuard],
         children: [
             { path: '', component: index_6.WelcomeComponent },
             { path: 'jackal', component: index_4.JackalComponent },
             { path: 'husky', component: index_5.HuskyComponent },
+            { path: 'Game/gametrain', component: index_16.GametrainComponent },
+            { path: 'Game/gametest', component: index_17.GametestComponent },
+            { path: 'simulation/huskysim', component: index_18.HuskysimComponent },
             { path: 'settings', component: index_7.SettingsComponent },
             { path: 'settings/change-password', component: index_10.ChangePasswordComponent },
             { path: 'settings/change-name', component: index_8.ChangeNameComponent },

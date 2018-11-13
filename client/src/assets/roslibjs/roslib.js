@@ -372,7 +372,7 @@
       } else {
         throw new Error("Uncaught, unspecified 'error' event.");
       }
-      return false;
+      // return false;
     }
 
     return !!this._all;

@@ -15,6 +15,9 @@ import { AddUsersComponent } from './home/settings/add-users/index';
 import { DeleteUsersComponent } from './home/settings/delete-users/index';
 import { ForgotPasswordComponent } from './auth/forgot-password/index';
 import { AuthGuard } from './_guards/index';
+import { GametrainComponent } from './home/Game/gametrain/index';
+import { GametestComponent } from './home/Game/gametest/index';
+import { HuskysimComponent } from './home/simulation/huskysim';
 
 
 const appRoutes: Routes = [
@@ -23,6 +26,9 @@ const appRoutes: Routes = [
         {path: '', component: WelcomeComponent},
         {path: 'jackal', component: JackalComponent},
 	{path: 'husky', component: HuskyComponent },
+  {path: 'Game/gametrain', component: GametrainComponent },
+  {path: 'Game/gametest', component: GametestComponent },
+  {path: 'simulation/huskysim', component: HuskysimComponent },
 	{path: 'settings', component: SettingsComponent},
 	{path: 'settings/change-password', component: ChangePasswordComponent},
 	{path: 'settings/change-name', component: ChangeNameComponent},
